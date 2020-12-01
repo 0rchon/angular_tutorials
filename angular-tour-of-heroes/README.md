@@ -1,5 +1,7 @@
 # AngularTourOfHeroes
 
+The purpose of this project is to understand and learn Angular. This is achieved by using the following tutorial on the [Angular Webpage](https://angular.io/tutorial). The commits in this project correspond to the different subtasks, unless declared otherwise in the commit message. 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
 ## Development server
