@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current status: Segment 6 - Course Project
+current progress: Segment 7.93 - Directives Deep Dives
 
 Coding tutorials for Angular
 * Angular Web-Page
@@ -12,4 +12,5 @@ Coding tutorials for Angular
     * basic assignment 3: Practicing Directives
   * cmp-databinding-start (over course of multiple sessions)
     * cmp-databinding-assignment-start
+  * directives-start (over course of multiple sessions)
   * course project (ongoing)
