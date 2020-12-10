@@ -1,4 +1,7 @@
-# angular_tutorials
+# Angular Tutorials
+
+current status: Segment 6 - Course Project
+
 Coding tutorials for Angular
 * Angular Web-Page
   * Tour of Heroes
