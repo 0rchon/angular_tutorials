@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current progress: Segment 7.93 - Directives Deep Dives
+current progress: Segment 7.102 - Building and Using a Dropdown Directive
 
 Coding tutorials for Angular
 * Angular Web-Page
