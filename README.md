@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current progress: Segment 7.102 - Building and Using a Dropdown Directive
+current progress: Segment 9.111 - Injecting Services into Services
 
 Coding tutorials for Angular
 * Angular Web-Page
@@ -13,4 +13,5 @@ Coding tutorials for Angular
   * cmp-databinding-start (over course of multiple sessions)
     * cmp-databinding-assignment-start
   * directives-start (over course of multiple sessions)
+  * services-start (over course of multiple sessions)
   * course project (ongoing)
