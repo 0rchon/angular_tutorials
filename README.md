@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current progress: Segment 9.111 - Injecting Services into Services
+current progress: Segment 11.123 - Changing Pages with Routing (Module Introduction)
 
 Coding tutorials for Angular
 * Angular Web-Page
@@ -14,4 +14,5 @@ Coding tutorials for Angular
     * cmp-databinding-assignment-start
   * directives-start (over course of multiple sessions)
   * services-start (over course of multiple sessions)
-  * course project (ongoing)
+    * services-assignment-start
+  * course project (services added)
