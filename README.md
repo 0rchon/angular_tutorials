@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current progress: Segment 11.123 - Changing Pages with Routing (Module Introduction)
+current progress: Segment 11.139 - Changing Pages with Routing (Setting Up Child (Nested) Routes)
 
 Coding tutorials for Angular
 * Angular Web-Page
@@ -15,4 +15,5 @@ Coding tutorials for Angular
   * directives-start (over course of multiple sessions)
   * services-start (over course of multiple sessions)
     * services-assignment-start
+  * routing-start (over course of multiple sessions)
   * course project (services added)
