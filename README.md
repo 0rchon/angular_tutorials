@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current progress: Segment 11.151 - Changing Pages with Routing
+current progress: Segment 11.171 - Understanding Observables
 
 Coding tutorials for Angular
 * Angular Web-Page
@@ -16,4 +16,5 @@ Coding tutorials for Angular
   * services-start (over course of multiple sessions)
     * services-assignment-start
   * routing-start (over course of multiple sessions)
+  * observatives-start
   * course project (services added)
