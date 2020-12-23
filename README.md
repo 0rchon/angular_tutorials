@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current progress: Segment 11.171 - Understanding Observables
+current progress: Segment 13.185 - Forms
 
 Coding tutorials for Angular
 * Angular Web-Page
@@ -16,5 +16,7 @@ Coding tutorials for Angular
   * services-start (over course of multiple sessions)
     * services-assignment-start
   * routing-start (over course of multiple sessions)
-  * observatives-start
-  * course project (services added)
+  * observers-start (over course of multiple sessions)
+  * forms-start
+    * template driven forms
+  * course project (observers added)
