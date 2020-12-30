@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current progress: Segment 15.200 - Reactive Forms
+current progress: Segment 15.215 - Reactive Forms
 
 Coding tutorials for Angular
 * Angular Web-Page
@@ -18,6 +18,8 @@ Coding tutorials for Angular
   * routing-start (over course of multiple sessions)
   * observers-start (over course of multiple sessions)
   * forms-start
-    * template driven forms
+    * forms-td-start
     * forms-td-assignment-start
+    * forms-reactive-start
+    * forms-reactive-assignment-start
   * course project (observers added)
