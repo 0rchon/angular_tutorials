@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current progress: Segment 15.215 - Reactive Forms
+current progress: Segment 18.267 - Http Request (error handling)
 
 Coding tutorials for Angular
 * Angular Web-Page
@@ -22,4 +22,7 @@ Coding tutorials for Angular
     * forms-td-assignment-start
     * forms-reactive-start
     * forms-reactive-assignment-start
-  * course project (observers added)
+  * pipes-start
+    * pipes-assignment-start
+  * http-01-start
+  * course project
