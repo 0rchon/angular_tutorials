@@ -8,31 +8,38 @@ import { Subject } from 'rxjs';
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-    new Recipe(
-      'Iskender Kebab',
-      'Delicious meal from the turkish city Bursa',
-      'https://upload.wikimedia.org/wikipedia/commons/c/ce/Iskender_kebap-2.jpg',
-      [
-        new Ingredient('Cow Meat', 1),
-        new Ingredient('Pide bread', 1),
-        new Ingredient('yoghurt', 1),
-        new Ingredient('Tomato Sauce', 1)
-      ]
-    ),
-    new Recipe(
-      'Inegöl Köfte',
-      'Delicious meal from the turkish city Inegöl',
-      'https://upload.wikimedia.org/wikipedia/commons/0/05/%C4%B0neg%C3%B6l_k%C3%B6fte.jpg',
-      [
-        new Ingredient('Cow Meat', 1),
-        new Ingredient('Lamb Meat', 1),
-        new Ingredient('Bread', 1)
-      ]
-    )
-  ];
+  private recipes: Recipe[] = [];
+
+  // private recipes: Recipe[] = [
+  //   new Recipe(
+  //     'Iskender Kebab',
+  //     'Delicious meal from the turkish city Bursa',
+  //     'https://upload.wikimedia.org/wikipedia/commons/c/ce/Iskender_kebap-2.jpg',
+  //     [
+  //       new Ingredient('Cow Meat', 1),
+  //       new Ingredient('Pide bread', 1),
+  //       new Ingredient('yoghurt', 1),
+  //       new Ingredient('Tomato Sauce', 1)
+  //     ]
+  //   ),
+  //   new Recipe(
+  //     'Inegöl Köfte',
+  //     'Delicious meal from the turkish city Inegöl',
+  //     'https://upload.wikimedia.org/wikipedia/commons/0/05/%C4%B0neg%C3%B6l_k%C3%B6fte.jpg',
+  //     [
+  //       new Ingredient('Cow Meat', 1),
+  //       new Ingredient('Lamb Meat', 1),
+  //       new Ingredient('Bread', 1)
+  //     ]
+  //   )
+  // ];
 
   constructor(private shoppingListService: ShoppingListService) {}
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
