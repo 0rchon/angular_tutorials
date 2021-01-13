@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current progress: Segment 18.267 - Http Request (error handling)
+current progress: Segment 20.299 - Authentication
 
 Coding tutorials for Angular
 * Angular Web-Page
