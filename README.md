@@ -1,6 +1,6 @@
 # Angular Tutorials
 
-current progress: Segment 20.299 - Authentication
+current progress: Segment 24.349 - NgRx
 
 Coding tutorials for Angular
 * Angular Web-Page
