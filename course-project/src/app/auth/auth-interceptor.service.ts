@@ -2,11 +2,9 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
-  HttpEvent,
   HttpParams,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { exhaustMap, take, tap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
