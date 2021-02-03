@@ -1,8 +1,9 @@
-import { Recipe } from './recipe.model';
 import { Injectable } from '@angular/core';
-import { Ingredient } from '../shared/ingredient.model';
 import { Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
+
+import { Recipe } from './recipe.model';
+import { Ingredient } from '../shared/ingredient.model';
 import * as ShoppingListActions from '../shopping-list/store/shopping-list.actions';
 import * as fromApp from '../store/app.reducer';
 
@@ -10,33 +11,25 @@ import * as fromApp from '../store/app.reducer';
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [];
-
   // private recipes: Recipe[] = [
   //   new Recipe(
-  //     'Iskender Kebab',
-  //     'Delicious meal from the turkish city Bursa',
-  //     'https://upload.wikimedia.org/wikipedia/commons/c/ce/Iskender_kebap-2.jpg',
-  //     [
-  //       new Ingredient('Cow Meat', 1),
-  //       new Ingredient('Pide bread', 1),
-  //       new Ingredient('yoghurt', 1),
-  //       new Ingredient('Tomato Sauce', 1)
-  //     ]
+  //     'Tasty Schnitzel',
+  //     'A super-tasty Schnitzel - just awesome!',
+  //     'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
+  //     [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
   //   ),
   //   new Recipe(
-  //     'Inegöl Köfte',
-  //     'Delicious meal from the turkish city Inegöl',
-  //     'https://upload.wikimedia.org/wikipedia/commons/0/05/%C4%B0neg%C3%B6l_k%C3%B6fte.jpg',
-  //     [
-  //       new Ingredient('Cow Meat', 1),
-  //       new Ingredient('Lamb Meat', 1),
-  //       new Ingredient('Bread', 1)
-  //     ]
+  //     'Big Fat Burger',
+  //     'What else you need to say?',
+  //     'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
+  //     [new Ingredient('Buns', 2), new Ingredient('Meat', 1)]
   //   )
   // ];
+  private recipes: Recipe[] = [];
 
-  constructor(private store: Store<fromApp.AppState>) {}
+  constructor(
+    private store: Store<fromApp.AppState>
+  ) {}
 
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
@@ -52,7 +45,7 @@ export class RecipeService {
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    //this.shoppingListService.addIngredients(ingredients);
+    // this.slService.addIngredients(ingredients);
     this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   }
 
