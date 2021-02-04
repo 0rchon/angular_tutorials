@@ -1,21 +1,22 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Actions, ofType, Effect } from '@ngrx/effects';
+import { switchMap, catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { AuthService } from '../auth.service';
-import { User } from '../user.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+
 import * as AuthActions from './auth.actions';
+import { User } from '../user.model';
+import { AuthService } from '../auth.service';
 
 export interface AuthResponseData {
+  kind: string;
   idToken: string;
   email: string;
   refreshToken: string;
   expiresIn: string;
   localId: string;
-  displayName?: string;
   registered?: boolean;
 }
 
@@ -30,28 +31,27 @@ const handleAuthentication = (
   localStorage.setItem('userData', JSON.stringify(user));
   return new AuthActions.AuthenticateSuccess({
     email: email,
-    userID: userId,
+    userId: userId,
     token: token,
     expirationDate: expirationDate,
-    redirect: true,
+    redirect: true
   });
 };
 
-const handleError = (errorResp: any) => {
-  let errorMessage = 'An unknown error occured!';
-
-  if (!errorResp.error || !errorResp.error.error) {
+const handleError = (errorRes: any) => {
+  let errorMessage = 'An unknown error occurred!';
+  if (!errorRes.error || !errorRes.error.error) {
     return of(new AuthActions.AuthenticateFail(errorMessage));
   }
-  switch (errorResp.error.error.message) {
+  switch (errorRes.error.error.message) {
     case 'EMAIL_EXISTS':
-      errorMessage = 'This email exists already!';
+      errorMessage = 'This email exists already';
       break;
     case 'EMAIL_NOT_FOUND':
-      errorMessage = 'Cannot find this email!';
+      errorMessage = 'This email does not exist.';
       break;
     case 'INVALID_PASSWORD':
-      errorMessage = 'This password is not correct';
+      errorMessage = 'This password is not correct.';
       break;
   }
   return of(new AuthActions.AuthenticateFail(errorMessage));
@@ -65,19 +65,19 @@ export class AuthEffects {
     switchMap((signupAction: AuthActions.SignupStart) => {
       return this.http
         .post<AuthResponseData>(
-          'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
+          'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' +
             environment.firebaseAPIKey,
           {
             email: signupAction.payload.email,
             password: signupAction.payload.password,
-            returnSecureToken: true,
+            returnSecureToken: true
           }
         )
         .pipe(
-          tap((resData) => {
+          tap(resData => {
             this.authService.setLogoutTimer(+resData.expiresIn * 1000);
           }),
-          map((resData) => {
+          map(resData => {
             return handleAuthentication(
               +resData.expiresIn,
               resData.email,
@@ -85,8 +85,8 @@ export class AuthEffects {
               resData.idToken
             );
           }),
-          catchError((errorResp) => {
-            return handleError(errorResp);
+          catchError(errorRes => {
+            return handleError(errorRes);
           })
         );
     })
@@ -98,19 +98,19 @@ export class AuthEffects {
     switchMap((authData: AuthActions.LoginStart) => {
       return this.http
         .post<AuthResponseData>(
-          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
+          'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' +
             environment.firebaseAPIKey,
           {
             email: authData.payload.email,
             password: authData.payload.password,
-            returnSecureToken: true,
+            returnSecureToken: true
           }
         )
         .pipe(
-          tap((resData) => {
+          tap(resData => {
             this.authService.setLogoutTimer(+resData.expiresIn * 1000);
           }),
-          map((resData) => {
+          map(resData => {
             return handleAuthentication(
               +resData.expiresIn,
               resData.email,
@@ -118,8 +118,8 @@ export class AuthEffects {
               resData.idToken
             );
           }),
-          catchError((errorResp) => {
-            return handleError(errorResp);
+          catchError(errorRes => {
+            return handleError(errorRes);
           })
         );
     })
@@ -145,7 +145,6 @@ export class AuthEffects {
         _token: string;
         _tokenExpirationDate: string;
       } = JSON.parse(localStorage.getItem('userData'));
-
       if (!userData) {
         return { type: 'DUMMY' };
       }
@@ -159,24 +158,23 @@ export class AuthEffects {
 
       if (loadedUser.token) {
         // this.user.next(loadedUser);
-
         const expirationDuration =
           new Date(userData._tokenExpirationDate).getTime() -
           new Date().getTime();
-
         this.authService.setLogoutTimer(expirationDuration);
-
         return new AuthActions.AuthenticateSuccess({
           email: loadedUser.email,
-          userID: loadedUser.id,
+          userId: loadedUser.id,
           token: loadedUser.token,
           expirationDate: new Date(userData._tokenExpirationDate),
-          redirect: false,
+          redirect: false
         });
 
+        // const expirationDuration =
+        //   new Date(userData._tokenExpirationDate).getTime() -
+        //   new Date().getTime();
         // this.autoLogout(expirationDuration);
       }
-
       return { type: 'DUMMY' };
     })
   );

@@ -8,9 +8,9 @@ export interface State {
 }
 
 const initialState: State = {
-  ingredients: [new Ingredient('tomatoes', 3), new Ingredient('lamb meat', 1)],
+  ingredients: [new Ingredient('Apples', 5), new Ingredient('Tomatoes', 10)],
   editedIngredient: null,
-  editedIngredientIndex: -1,
+  editedIngredientIndex: -1
 };
 
 export function shoppingListReducer(
@@ -21,32 +21,28 @@ export function shoppingListReducer(
     case ShoppingListActions.ADD_INGREDIENT:
       return {
         ...state,
-        ingredients: [...state.ingredients, action.payload],
+        ingredients: [...state.ingredients, action.payload]
       };
-
     case ShoppingListActions.ADD_INGREDIENTS:
       return {
         ...state,
-        ingredients: [...state.ingredients, ...action.payload],
+        ingredients: [...state.ingredients, ...action.payload]
       };
-
     case ShoppingListActions.UPDATE_INGREDIENT:
       const ingredient = state.ingredients[state.editedIngredientIndex];
       const updatedIngredient = {
         ...ingredient,
-        ...action.payload,
+        ...action.payload
       };
       const updatedIngredients = [...state.ingredients];
-
       updatedIngredients[state.editedIngredientIndex] = updatedIngredient;
 
       return {
         ...state,
         ingredients: updatedIngredients,
         editedIngredientIndex: -1,
-        editedIngredient: null,
+        editedIngredient: null
       };
-
     case ShoppingListActions.DELETE_INGREDIENT:
       return {
         ...state,
@@ -54,22 +50,20 @@ export function shoppingListReducer(
           return igIndex !== state.editedIngredientIndex;
         }),
         editedIngredientIndex: -1,
-        editedIngredient: null,
+        editedIngredient: null
       };
     case ShoppingListActions.START_EDIT:
       return {
         ...state,
         editedIngredientIndex: action.payload,
-        editedIngredient: { ...state.ingredients[action.payload] },
+        editedIngredient: { ...state.ingredients[action.payload] }
       };
-
     case ShoppingListActions.STOP_EDIT:
       return {
         ...state,
-        editedIngredientIndex: -1,
         editedIngredient: null,
+        editedIngredientIndex: -1
       };
-
     default:
       return state;
   }
